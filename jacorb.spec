@@ -91,7 +91,7 @@ Patch7:         jacorb-2.3.0-no-classpath-in-manifest.patch
 
 Name:           jacorb
 Version:        2.3.0
-Release:        %mkrel 1.0.2
+Release:        %mkrel 1.0.3
 Epoch:          0
 License:        LGPL
 Group:          Development/Java
@@ -107,7 +107,7 @@ BuildRequires:   ant >= 0:1.6.5
 BuildRequires:   antlr
 BuildRequires:   concurrent
 BuildRequires:   avalon-framework
-BuildRequires:   avalon-logkit
+BuildRequires:   excalibur-avalon-logkit
 #BuildRequires:  backport-util-concurrent
 BuildRequires:   jakarta-commons-collections
 BuildRequires:   jakarta-commons-logging
@@ -118,7 +118,7 @@ BuildRequires:   xjavadoc
 Requires:        jpackage-utils >= 0:1.6
 Requires:        concurrent
 Requires:        avalon-framework
-Requires:        avalon-logkit
+Requires:        excalibur-avalon-logkit
 Requires:        jakarta-commons-collections
 Requires:        jakarta-commons-logging
 Requires:        tanukiwrapper
