@@ -54,6 +54,7 @@ Source1:        jacorb-jboss-component-info.xml
 #Source3:       http://repository.jboss.com/jacorb/2.3.0jboss.patch3/resources/CosTransactions.idl
 Source4:        http://repository.jboss.com/jacorb/2.3.0jboss.patch3/resources/jacorb.properties
 Source5:        http://repository.jboss.com/jacorb/2.3.0jboss.patch3/resources/orb.idl
+Source6:        jacorb-idl-compiler-2.2.4.pom
 Patch0:         jacorb-2.3.0-notification-build_xml.patch
 Patch1:         jacorb-2.3.0-version.patch
 # The size of a chunk should not include any bytes of padding that might have
@@ -91,7 +92,7 @@ Patch7:         jacorb-2.3.0-no-classpath-in-manifest.patch
 
 Name:           jacorb
 Version:        2.3.0
-Release:        %mkrel 1.0.3
+Release:        %mkrel 1.0.4
 Epoch:          0
 License:        LGPL
 Group:          Development/Java
@@ -279,6 +280,11 @@ install -p -m 0644 lib/idl.jar $RPM_BUILD_ROOT%{_javadir}/%{name}/idl-%{version}
 install -p -m 0644 temp/idl_g.jar $RPM_BUILD_ROOT%{_javadir}/%{name}/idl_g-%{version}.jar
 (cd $RPM_BUILD_ROOT%{_javadir}/%{name} && for jar in *-%{version}*; do ln -sf ${jar} `echo $jar| sed  "s|-%{version}||g"`; done)
 
+# pom
+install -dm 0755 $RPM_BUILD_ROOT%{_datadir}/maven2/poms
+install -m 0644 %{SOURCE6} $RPM_BUILD_ROOT%{_datadir}/maven2/poms/JPP.jacorb-idl.pom
+%add_to_maven_depmap org.jacorb jacorb-idl-compiler %{version} JPP/jacorb idl
+
 # bin, etc, idl
 install -d -m 0755 $RPM_BUILD_ROOT%{_datadir}/%{name}-%{version}/bin
 cp -pr bin/*   $RPM_BUILD_ROOT%{_datadir}/%{name}-%{version}/bin
@@ -335,12 +341,16 @@ install -d -m 0755 $RPM_BUILD_ROOT%{_datadir}/%{name}-%{version}/demo
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%if %{gcj_support}
 %post
-%{update_gcjdb}
+%update_maven_depmap
+%if %{gcj_support}
+  %{update_gcjdb}
+%endif
 
 %postun
-%{clean_gcjdb}
+%update_maven_depmap
+%if %{gcj_support}
+  %{clean_gcjdb}
 %endif
 
 %files
@@ -351,6 +361,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(0755,root,root) %{_datadir}/%{name}-%{version}/bin/*
 %{_datadir}/%{name}-%{version}/etc
 %{_datadir}/%{name}-%{version}/idl
+%{_datadir}/maven2/poms
+%{_mavendepmapfragdir}
 %dir %{_libdir}/gcj/%{name}
 %attr(-,root,root) %{_libdir}/gcj/%{name}/*
 
