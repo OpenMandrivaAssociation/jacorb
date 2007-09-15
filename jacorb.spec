@@ -92,13 +92,11 @@ Patch7:         jacorb-2.3.0-no-classpath-in-manifest.patch
 
 Name:           jacorb
 Version:        2.3.0
-Release:        %mkrel 1.0.4
+Release:        %mkrel 1.0.5
 Epoch:          0
 License:        LGPL
 Group:          Development/Java
 %if %{gcj_support}
-Requires(post): java-gcj-compat
-Requires(postun): java-gcj-compat
 BuildRequires:  java-gcj-compat-devel
 %else
 BuildArch: noarch
