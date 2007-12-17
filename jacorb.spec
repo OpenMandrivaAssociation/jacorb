@@ -122,7 +122,6 @@ Requires:        jakarta-commons-collections
 Requires:        jakarta-commons-logging
 Requires:        tanukiwrapper
 #Optional:       picocontainer
-BuildRoot:       %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 - high-performance, fully multithreaded ORB 
