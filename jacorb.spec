@@ -96,6 +96,7 @@ Release:        %mkrel 1.0.6
 Epoch:          0
 License:        LGPL
 Group:          Development/Java
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 %if %{gcj_support}
 BuildRequires:  java-gcj-compat-devel
 %else
