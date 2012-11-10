@@ -1,0 +1,20 @@
+diff -r -u --ignore-all-space 2.3.0zip/JacORB/src/org/jacorb/notification/build.xml 2.3.0cvs/JacORB/src/org/jacorb/notification/build.xml
+--- src/org/jacorb/notification/build.xml	2007-05-28 15:51:03.000000000 -0400
++++ src/org/jacorb/notification/build.xml	2007-05-28 16:12:37.000000000 -0400
+@@ -30,14 +30,14 @@
+ 		<mkdir dir="${src}/generated/${etcl.target.package}" />
+ 
+ 		<path id="path.antlr">
+-			<pathelement path="${basedir}/lib/antlr-2.7.2.jar" />
++			<pathelement path="${basedir}/lib/antlr.jar" />
+ 		</path>
+ 
+ 		<path id="classpath">
+ 			<path refid="path.base" />
+ 			<path refid="path.mx4j" />
+ 			<path refid="path.jboss" />
+-			<pathelement location="${lib}/wrapper-3.1.0.jar" />
++			<pathelement location="${lib}/tanukiwrapper.jar" />
+ 		</path>
+ 
+ 		<macrodef name="jacorb-antlr">

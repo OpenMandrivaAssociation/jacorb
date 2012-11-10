@@ -1,0 +1,11 @@
+--- JacORB/etc/jacorb_jar.manifest.orig	2007-08-24 03:49:32.000000000 +0200
++++ JacORB/etc/jacorb_jar.manifest	2007-08-24 03:49:39.000000000 +0200
+@@ -1,8 +1 @@
+ Manifest-Version: 1.0 
+-Class-Path: 
+- logkit-1.2.jar 
+- avalon-framework-4.1.5.jar 
+- concurrent-1.3.2.jar 
+- antlr-2.7.2.jar
+-
+-

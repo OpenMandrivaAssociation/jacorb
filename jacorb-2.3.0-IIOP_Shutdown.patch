@@ -1,0 +1,17 @@
+--- src/org/jacorb/orb/iiop/IIOPListener.java.orig	2006-07-19 12:25:46.000000000 -0300
++++ src/org/jacorb/orb/iiop/IIOPListener.java	2007-06-06 17:40:50.000000000 -0300
+@@ -805,6 +805,14 @@
+         {
+             final IIOPLoopbackConnection connection =
+                 new IIOPLoopbackConnection(lis, los) ;
++            try
++            {
++                connection.configure(configuration);
++            }
++            catch( ConfigurationException ce )
++            {
++                throw new org.omg.CORBA.INTERNAL("ConfigurationException: " + ce.toString());
++            }
+             deliverConnection(connection);
+         }
+ 
