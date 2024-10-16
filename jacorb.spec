@@ -47,7 +47,7 @@
 %define section devel
 
 Summary:        Free Java implementation of OMG's CORBA standard
-URL:            http://www.jacorb.org/
+URL:            https://www.jacorb.org/
 Source0:        http://www.jacorb.org/releases/2.3.0/JacORB-2.3.0-src.zip
 Source1:        jacorb-jboss-component-info.xml
 #Source2:       http://repository.jboss.com/jacorb/2.3.0jboss.patch3/resources/CSI.idl
